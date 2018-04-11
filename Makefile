@@ -27,3 +27,4 @@ tests: qemu
 
 clean:
 	rm -rf qemu/build qemu/build.ok
+	rm -rf tricore-binutils/build/ tricore-binutils/install
