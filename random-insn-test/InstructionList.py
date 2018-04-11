@@ -151,7 +151,7 @@ insn = [Instruction("add"       , [RandomRegister("d") , RandomRegister("d")    
         Instruction("mov.a"      , [RandomRegister("a") , RandomConstant(4, 0)                                              ]),
         Instruction("mov.aa"     , [RandomRegister("a") , RandomRegister("a")                                               ]),
         Instruction("mov.d"      , [RandomRegister("d") , RandomRegister("a")                                               ]),
-        Instruction("mov"        , [RandomRegister64("e"), RandomConstant(4, 1)                                             ]),
+        #Instruction("mov"        , [RandomRegister64("e"), RandomConstant(4, 1)                                             ]),
         Instruction("mul"        , [RandomRegister("d") , RandomRegister("d")                                               ]),
 
         Instruction("not"        , [RandomRegister("d")                                                                     ]),
@@ -422,8 +422,8 @@ insn = [Instruction("add"       , [RandomRegister("d") , RandomRegister("d")    
         Instruction("dvinit.bu" , [RandomRegister64("e"), RandomRegister("d"), RandomRegister("d")                          ]),
         Instruction("parity"    , [RandomRegister("d")  , RandomRegister("d")                                               ]),
         Instruction("unpack"    , [RandomRegister64("e"), RandomRegister("d")                                               ]),
-        Instruction("div"       , [RandomRegister64("e"), RandomRegister("d"), RandomRegister("d")                          ]),
-        Instruction("div.u"     , [RandomRegister64("e"), RandomRegister("d"), RandomRegister("d")                          ]),
+        #Instruction("div"       , [RandomRegister64("e"), RandomRegister("d"), RandomRegister("d")                          ]),
+        #Instruction("div.u"     , [RandomRegister64("e"), RandomRegister("d"), RandomRegister("d")                          ]),
 #RR1 format
         Instruction("mul.h"     , [RandomRegister64("e"), RandomRegister("d"), RandomRegisterMode("d", "ll"), RandomConstant(1,0) ]),
         Instruction("mul.h"     , [RandomRegister64("e"), RandomRegister("d"), RandomRegisterMode("d", "lu"), RandomConstant(1,0) ]),
@@ -641,10 +641,10 @@ insn = [Instruction("add"       , [RandomRegister("d") , RandomRegister("d")    
         Instruction("mul.f"       , [RandomRegister("d")  , RandomRegister("d") , RandomRegister("d")                         ]),
         Instruction("div.f"       , [RandomRegister("d")  , RandomRegister("d") , RandomRegister("d")                         ]),
         Instruction("ftoi"        , [RandomRegister("d")  , RandomRegister("d")                                               ]),
-        Instruction("ftouz"        , [RandomRegister("d")  , RandomRegister("d")                                              ]),
+        #Instruction("ftouz"        , [RandomRegister("d")  , RandomRegister("d")                                              ]),
         Instruction("itof"        , [RandomRegister("d")  , RandomRegister("d")                                               ]),
         Instruction("madd.f"      , [RandomRegister("d")  , RandomRegister("d"), RandomRegister("d"), RandomRegister("d")     ]),
         Instruction("msub.f"      , [RandomRegister("d")  , RandomRegister("d"), RandomRegister("d"), RandomRegister("d")     ]),
-        Instruction("restore"  , [RandomRegister("d")                                                                         ]),
+        #Instruction("restore"  , [RandomRegister("d")                                                                         ]),
        ]
 

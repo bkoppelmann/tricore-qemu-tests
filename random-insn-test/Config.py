@@ -3,14 +3,14 @@
 ##  Config
 ##
 ###########################
+prefix = "../tricore-binutils/install/bin/"
 
-tas     = "tricore-as"
-tgcc    = "tricore-gcc"
-tld     = "tricore-ld"
+tas     = prefix + "tricore-as"
+tld     = prefix + "tricore-ld"
 
 tsim = "tsim"
 qemu = "../../qemu/build/tricore-softmmu/qemu-system-tricore"
-version ="161"
+version ="13"
 
 ldscript = "target.ld"
 

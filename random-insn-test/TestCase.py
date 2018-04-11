@@ -35,7 +35,7 @@ class TestCase:
             os.mkdir(name)
         else:
             os.system("rm -f "+name+"/"+name+".*")
-         
+
         with open(name+"/"+name+".s", "a") as f:
             # generate intro
             f.write(".text\n")
@@ -78,7 +78,7 @@ class TestCase:
 
         r = randint(0, len(insn)-1)
         # if we have a jump insn we need to init the JumpOffset first,
-        # since it needs to know the current pc for the max_range 
+        # since it needs to know the current pc for the max_range
         # calculation
         for field in insn[r].insn_fields:
             if isinstance(field, JumpOffset):
@@ -95,15 +95,15 @@ class TestCase:
         # asm
         os.system(tas + " -mtc"+version+" -o0 " + self.name+"/"+self.name+".s -o" + self.name+"/"+self.name+".o")
         # ld
-        os.system(tld + " --mcpu=tc"+version+" -T "+ ldscript + " " + self.name+"/"+self.name+".o" + " -o " + self.name+"/"+self.name+ ".elf")
+        os.system(tld + " -T "+ ldscript + " " + self.name+"/"+self.name+".o" + " -o " + self.name+"/"+self.name+ ".elf")
 
     def runTSIM(self):
         global tsim
-        global version 
+        global version
         print_out("Running TSIM for " + self.name)
 
         exe = "cd " + self.name + "&&" +                 \
-              tsim + version + " -e -disable-watchdog -o " + self.name +".elf"
+              tsim + " -e -disable-watchdog -o " + self.name +".elf"
 
         os.system(exe)
         os.system("mv " + self.name + "/Sim.traceinstr " + self.name  + "/tsim.result")

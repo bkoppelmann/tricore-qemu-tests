@@ -35,6 +35,7 @@ def main():
     parser.add_argument('runs', type=int, help='Number of tests to run')
     args = parser.parse_args()
 
+    print os.getcwd()
     fails = list()
 
     for i in range(1, args.runs + 1):
