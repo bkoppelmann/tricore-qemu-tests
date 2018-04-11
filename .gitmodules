@@ -2,3 +2,6 @@
 	path = qemu
 	url = https://github.com/bkoppelmann/qemu-tricore-upstream.git
 	branch = debug-test
+[submodule "tricore-binutils"]
+	path = tricore-binutils
+	url = https://github.com/bkoppelmann/tricore-binutils.git
