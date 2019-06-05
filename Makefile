@@ -1,5 +1,5 @@
 JOBS=$(shell echo `nproc`)
-QEMU_CONFIGURE_FLAGS=--target-list=tricore-softmmu --python=python2
+QEMU_CONFIGURE_FLAGS=--target-list=tricore-softmmu --enable-debug
 BU_CONFIGURE_FLAGS=--target=tricore --prefix=$(shell pwd)/tricore-binutils/install/
 NUMRUNS=100
 
@@ -26,5 +26,8 @@ tests: qemu
 	@cd random-insn-test && ./GenerateTests.py $(NUMRUNS)
 
 clean:
+	rm -rf random-insn-test/test*
+
+mrpropper:
 	rm -rf qemu/build qemu/build.ok
 	rm -rf tricore-binutils/build/ tricore-binutils/install
