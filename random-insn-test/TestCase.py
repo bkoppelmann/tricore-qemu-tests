@@ -95,7 +95,8 @@ class TestCase:
         # asm
         os.system(tas + " -mtc"+version+" -o0 " + self.name+"/"+self.name+".s -o" + self.name+"/"+self.name+".o")
         # ld
-        os.system(tld + " -T "+ ldscript + " " + self.name+"/"+self.name+".o" + " -o " + self.name+"/"+self.name+ ".elf")
+        ld_str = "{ld} --mcpu=tc{ver} -T {script} {name}/{name}.o -o {name}/{name}.elf".format(ld=tld, ver=version, script=ldscript, name=self.name)
+        os.system(ld_str)
 
     def runTSIM(self):
         global tsim
@@ -114,8 +115,7 @@ class TestCase:
 
         f = open(self.name+"/run_qemu.sh", "w")
 
-        exe = "cd " + self.name + "&&" +                 \
-              qemu + " -cpu tc27x -machine tricore_testboard -kernel " + self.name +".elf -nographic"
+        exe = "cd {test} && {QEMU} -cpu tc27x -machine tricore_testboard -kernel {test}.elf -nographic -singlestep -D /tmp/regdump -d nochain,exec,cpu".format(test=self.name, QEMU=qemu)
         f.write("#!/bin/sh\n")
         f.write(qemu + " -machine tricore_testboard -kernel " + self.name +".elf -nographic\n")
         f.write("cp /tmp/regdump qemu.result\n")
