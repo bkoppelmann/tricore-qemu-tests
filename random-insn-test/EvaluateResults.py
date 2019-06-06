@@ -142,7 +142,7 @@ def comparePSW(tsimline, qemuline, linenum):
 
     if int(psw_tsim,16) <> psw_qemu:
         error = error +1
-        print "Error at Instruction "+str(linenum) + " PSW: tsim =" + str(psw_tsim) + ", qemu =" + psw_qemu
+        print "Error at Instruction "+str(linenum) + " PSW: tsim =" + str(psw_tsim) + ", qemu =" + str(hex(psw_qemu))
 
 
 if len(sys.argv) < 3:
