@@ -645,6 +645,10 @@ insn = [Instruction("add"       , [RandomRegister("d") , RandomRegister("d")    
         Instruction("itof"        , [RandomRegister("d")  , RandomRegister("d")                                               ]),
         Instruction("madd.f"      , [RandomRegister("d")  , RandomRegister("d"), RandomRegister("d"), RandomRegister("d")     ]),
         Instruction("msub.f"      , [RandomRegister("d")  , RandomRegister("d"), RandomRegister("d"), RandomRegister("d")     ]),
+        Instruction("extr"        , [RandomRegister("d")  , RandomRegister("d"), RandomPosWidthPair(5, 5)]),
+        Instruction("extr.u"        , [RandomRegister("d")  , RandomRegister("d"), RandomPosWidthPair(5, 5)]),
+        Instruction("imask"        , [RandomRegister64("e")  , RandomConstant(4,0), RandomPosWidthPair(5, 5)]),
+        Instruction("imask"        , [RandomRegister64("e")  , RandomRegister("d"), RandomPosWidthPair(5, 5)]),
         #Instruction("restore"  , [RandomRegister("d")                                                                         ]),
        ]
 

@@ -147,6 +147,21 @@ class Constant(InstructionField):
     def __init__(self, val):
         self.name = str(val)
 
+
+class RandomPosWidthPair(InstructionField):
+
+    def __init__(self, lengthPos, lengthWidth):
+        self.lengthPos = (1 << lengthPos) -1
+        self.lengthWidth = (1 << lengthWidth) -1
+
+    def getString(self):
+        pos = 64
+        width = 0
+        while (pos + width > 32):
+            pos = randint(0, self.lengthPos)
+            width = randint(0, self.lengthWidth)
+        return str(pos) + ", " + str(width)
+
 class RandomConstant(InstructionField):
 
     def __init__(self, length, sign):
