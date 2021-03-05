@@ -95,7 +95,7 @@ class TestCase:
         # asm
         os.system(tas + " -mtc"+version+" -o0 " + self.name+"/"+self.name+".s -o" + self.name+"/"+self.name+".o")
         # ld
-        ld_str = "{ld} --mcpu=tc{ver} -T {script} {name}/{name}.o -o {name}/{name}.elf".format(ld=tld, ver=version, script=ldscript, name=self.name)
+        ld_str = "{ld} -T {script} {name}/{name}.o -o {name}/{name}.elf".format(ld=tld, ver=version, script=ldscript, name=self.name)
         os.system(ld_str)
 
     def runTSIM(self):
@@ -115,14 +115,14 @@ class TestCase:
 
         f = open(self.name+"/run_qemu.sh", "w")
 
-        exe = "cd {test} && {QEMU} -cpu tc27x -machine tricore_testboard -kernel {test}.elf -nographic -singlestep -D /tmp/regdump -d nochain,exec,cpu".format(test=self.name, QEMU=qemu)
+        movdir = "cd {}".format(self.name)
+        qemu_cmd = "{QEMU} -cpu tc27x -machine tricore_testboard -kernel {test}.elf -nographic -signlestep -D qemu.result -d nochain,exec,cpu".format(test=self.name, QEMU=qemu)
+        exe = "{} && {}".format(movdir, qemu_cmd)
         f.write("#!/bin/sh\n")
-        f.write(qemu + " -machine tricore_testboard -kernel " + self.name +".elf -nographic\n")
-        f.write("cp /tmp/regdump qemu.result\n")
+        f.write(qemu_cmdn)
         f.close()
         os.system("chmod u+x "+self.name+"/run_qemu.sh")
         os.system(exe + " > /dev/null")
-        os.system("cp /tmp/regdump "+ self.name + "/qemu.result")
 
     def compareResults(self):
         print_out("Comparing results for " + self.name)
