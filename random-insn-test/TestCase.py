@@ -119,7 +119,7 @@ class TestCase:
         qemu_cmd = "{QEMU} -cpu tc27x -machine tricore_testboard -kernel {test}.elf -nographic -signlestep -D qemu.result -d nochain,exec,cpu".format(test=self.name, QEMU=qemu)
         exe = "{} && {}".format(movdir, qemu_cmd)
         f.write("#!/bin/sh\n")
-        f.write(qemu_cmdn)
+        f.write(qemu_cmd)
         f.close()
         os.system("chmod u+x "+self.name+"/run_qemu.sh")
         os.system(exe + " > /dev/null")
